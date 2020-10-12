@@ -1,0 +1,15 @@
+docker create \
+  --name=jellyfin \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/Budapest \
+  -p 8097:8096 \
+  -p 7359:7359 \
+  -p 1900:1900 \
+  -v /home/docker/jellyfin:/config \
+  -v /mnt/cryptmount:/movies1 \
+  -v /mnt/data1/video:/movies2 \
+  -v /mnt/data1/torrent:/torrent \
+  --device /dev/dri:/dev/dri \
+  --restart unless-stopped \
+  linuxserver/jellyfin
